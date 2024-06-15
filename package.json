@@ -1,0 +1,39 @@
+{
+  "name": "portfolioo",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@react-three/drei": "^9.105.6",
+    "@react-three/fiber": "^8.16.6",
+    "ios-inner-height": "^1.1.1",
+    "maath": "^0.10.7",
+    "popmotion": "^11.0.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-lottie": "^1.2.4",
+    "react-simple-typewriter": "^5.0.1",
+    "react-tilt": "^1.0.2",
+    "react-transition-group": "^4.4.5",
+    "react-vertical-timeline-component": "^3.6.0",
+    "three": "^0.164.1",
+    "use-dencrypt-effect": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.66",
+    "@types/react-dom": "^18.2.22",
+    "@vitejs/plugin-react": "^4.2.1",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.6",
+    "tailwindcss": "^3.4.3",
+    "vite": "^5.2.0"
+  }
+}
