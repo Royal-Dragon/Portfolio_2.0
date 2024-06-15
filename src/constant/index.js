@@ -143,7 +143,7 @@ import {
     },
     {
       title: "Backend Developer",
-      company_name: "Shopify",
+      company_name: "Hanivisu Technologies",
       icon: shopify,
       iconBg: "#383E56",
       date: "Jan 2022 - Jan 2023",
