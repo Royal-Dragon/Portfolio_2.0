@@ -13,21 +13,22 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.3.3",
     "@react-three/drei": "^9.105.6",
     "@react-three/fiber": "^8.16.6",
+    "framer-motion": "^12.38.0",
     "gh-pages": "^6.1.1",
     "ios-inner-height": "^1.1.1",
     "maath": "^0.10.7",
     "popmotion": "^11.0.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-lottie": "^1.2.4",
+    "react-router-dom": "^7.14.0",
     "react-simple-typewriter": "^5.0.1",
     "react-tilt": "^1.0.2",
     "react-transition-group": "^4.4.5",
     "react-vertical-timeline-component": "^3.6.0",
-    "three": "^0.164.1",
-    "use-dencrypt-effect": "^2.0.0"
+    "three": "^0.164.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",

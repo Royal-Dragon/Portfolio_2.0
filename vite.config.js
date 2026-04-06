@@ -12,6 +12,16 @@ export default defineConfig({
     commonjsOptions: {
       transformMixedEsModules: true,
     },
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'three-vendor': ['three', '@react-three/fiber', '@react-three/drei'],
+          'motion-vendor': ['framer-motion'],
+          'ui-vendor': ['react-tilt', 'react-vertical-timeline-component', 'react-simple-typewriter'],
+          'mail-vendor': ['@emailjs/browser'],
+        },
+      },
+    },
   },
-  server:{port: 3000},
+  server: { port: 3000, host: true },
 })

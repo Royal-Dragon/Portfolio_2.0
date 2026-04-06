@@ -5,14 +5,14 @@ import { motion } from 'framer-motion';
 
 const Scroll = () => {
   return (
-    <div className="absolute bottom-[1px] w-full flex justify-center items-center">
+    <div className="absolute bottom-[1px] w-full flex justify-center items-center py-6">
       <a href="#about">
         <motion.div
           animate={{ y: [0, 20, 0] }}
           transition={{
             duration: 1.5,
-            // repeat : Infinity,
-            // repeatType: 'loop',
+            repeat: Infinity,
+            repeatType: 'loop',
           }}
           className="w-8 rounded-full h-14 border-violet-500 border-4  flex justify-center items-center cursor-pointer"
         >

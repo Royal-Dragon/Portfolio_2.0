@@ -35,7 +35,7 @@ const SimpleBall = (props) => {
 
 const BallCanvas = ({icon}) => {
   return (
-    <Canvas>
+    <Canvas aria-hidden="true">
       <OrbitControls enableZoom={false} />
       <ambientLight intensity={0.25} />
       <directionalLight position={[0, 0, 0.05]} />

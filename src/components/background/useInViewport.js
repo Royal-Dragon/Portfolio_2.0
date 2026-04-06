@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 
+const DEFAULT_OPTIONS = {};
+
 export function useInViewport(
   elementRef,
   unobserveOnIntersect,
-  options = {},
+  options = DEFAULT_OPTIONS,
   shouldObserve = true
 ) {
   const [intersect, setIntersect] = useState(false);

@@ -18,7 +18,7 @@ const Navbar = () => {
             window.scrollTo(0, 0);
           }}
         >
-          <img src={logo} className='w-9 h-9 object-contain' />
+          <img src={logo} alt="Abhiram logo" className='w-9 h-9 object-contain' />
           <p className='font-bold text-white text-[16px] cursor-pointer'>Abhiram &nbsp; | Web Developer</p>
         </Link>
         <ul className='list-none hidden sm:flex flex-row gap-10'>
@@ -29,23 +29,25 @@ const Navbar = () => {
               onClick={() => {
                 setActive(link.title);
               }}>
-              <a href={'#' + link.id}>{link.title}</a>
+              <a href={'#' + link.id} aria-current={active === link.title ? 'page' : undefined}>{link.title}</a>
             </li>
           ))}
         </ul>
         <div className='sm:hidden flex flex-1 justify-end items-center'>
-          <img src={toggle ? close : menu} alt="menu"
-            className='w-[24px] mr-2 -mt-1 object-contain cursor-pointer'
-            onClick={() => {
-              setToggle(!toggle);
-            }}
-          />
-          <div className={`${!toggle ? 'hidden' : 'flex'} z-40 absolute top-20 right-0 bg-gray-50 p-4 rounded-md shadow-lg`}>
+          <button
+            aria-label="Toggle navigation menu"
+            aria-expanded={toggle}
+            onClick={() => setToggle(!toggle)}
+            className='bg-transparent border-none cursor-pointer p-1'
+          >
+            <img src={toggle ? close : menu} alt="" className='w-[24px] object-contain' />
+          </button>
+          <div className={`${!toggle ? 'hidden' : 'flex'} z-40 absolute top-20 right-0 bg-[#1a1a2e] p-4 rounded-md shadow-lg`}>
             <ul className="list-none flex flex-col space-y-4">
               {navLinks.map((link) => (
                 <li
                   key={link.id}
-                  className={`${active === link.title ? "text-white" : "text-gray-400"} p-1 hover:text-white font-medium`}
+                  className={`${active === link.title ? "text-white" : "text-gray-300"} p-1 hover:text-white font-medium`}
                   onClick={() => {
                     setToggle(!toggle);
                     setActive(link.title);

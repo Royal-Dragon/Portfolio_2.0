@@ -24,10 +24,10 @@ const Contact = () => {
     const { target } = e;
     const { name, value } = target;
 
-    setForm({
-      ...form,
+    setForm(prev => ({
+      ...prev,
       [name]: value,
-    });
+    }));
   };
 
   const handleSubmit = (e) => {
@@ -36,10 +36,8 @@ const Contact = () => {
 
     emailjs
       .send(
-        // import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
-        // import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
-        'service_zyvfnbx',
-        'template_xf6fhxj',
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         {
           from_name: form.name,
           to_name: "Abhiram Royals",
@@ -47,8 +45,7 @@ const Contact = () => {
           to_email: "abhiramroyals004@gmail.com",
           message: form.message,
         },
-        // import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
-        '-O6i_ER6IHMvU1yr1'
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
 
       )
       .then(
@@ -89,36 +86,42 @@ const Contact = () => {
           onSubmit={handleSubmit}
           className='mt-12 flex flex-col gap-8'
         >
-          <label className='flex flex-col'>
+          <label htmlFor='contact-name' className='flex flex-col'>
             <span className='text-white font-medium mb-4'>Your Name</span>
             <input
+              id='contact-name'
               type='text'
               name='name'
               value={form.name}
               onChange={handleChange}
               placeholder="What's your name?"
+              required
               className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
             />
           </label>
-          <label className='flex flex-col'>
-            <span className='text-white font-medium mb-4'>Your email</span>
+          <label htmlFor='contact-email' className='flex flex-col'>
+            <span className='text-white font-medium mb-4'>Your Email</span>
             <input
+              id='contact-email'
               type='email'
               name='email'
               value={form.email}
               onChange={handleChange}
-              placeholder="What's your web address?"
+              placeholder="What's your email address?"
+              required
               className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
             />
           </label>
-          <label className='flex flex-col'>
-            <span className='text-white font-medium mb-4'>Wanna recurit Me</span>
+          <label htmlFor='contact-message' className='flex flex-col'>
+            <span className='text-white font-medium mb-4'>Message</span>
             <textarea
+              id='contact-message'
               rows={7}
               name='message'
               value={form.message}
               onChange={handleChange}
-              placeholder='What you want to say?'
+              placeholder='What do you want to say?'
+              required
               className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
             />
           </label>
