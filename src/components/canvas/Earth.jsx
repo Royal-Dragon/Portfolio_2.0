@@ -15,7 +15,23 @@ const Earth = () => {
     return () => query.removeEventListener('change', handler);
   }, []);
 
-  if (isMobile) return null;
+  if (isMobile) return  (
+    <Canvas aria-hidden="true" className=' h-screen -mt-20'
+    frameloop="demand"
+    shadows
+    camera={{position:[100,4,0],fov:25}}
+    gl={{preserveDrawingBuffer: true}}
+    >
+    <ambientLight/>
+    <hemisphereLight intensity={0.45} groundColor={"black"}/>
+    <pointLight intensity={0.5}/>
+    <OrbitControls enableZoom={false} enabled={false}
+    minPolarAngle={Math.PI/2} maxPolarAngle={Math.PI/2} />
+      <Suspense fallback={null}>
+        <Rocket />
+      </Suspense>
+    </Canvas>
+  );
 
   return (
     <Canvas aria-hidden="true" className=' h-screen -mt-20'

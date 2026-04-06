@@ -1,8 +1,7 @@
 
 import { DecoderText } from './decoder_text/decoder-text';
-import React from 'react';
+import React, { lazy,Suspense, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Suspense,lazy } from 'react';
 import { style } from '../style';
 import { Typewriter} from 'react-simple-typewriter';
 import ComputersCanvas from './canvas/Computers';  
@@ -18,6 +17,16 @@ const DisplacementSphere = lazy(() =>
 
 
 const Hero = () => {
+   const [isMobile, setIsMobile] = useState(false);
+  
+    useEffect(() => {
+      const query = window.matchMedia('(max-width: 768px)');
+      setIsMobile(query.matches);
+      const handler = (e) => setIsMobile(e.matches);
+      query.addEventListener('change', handler);
+      return () => query.removeEventListener('change', handler);
+    }, []);
+
   return (
     <section
       className='relative w-full h-screen mx-auto overflow-x-hidden overflow-y-hidden'
@@ -35,7 +44,8 @@ const Hero = () => {
         </div>
         <div>
           <h1 className={`${style.heroHeadText}`}>Hi, I'm &nbsp;
-          <span className='text-[#915eff]'>
+          {isMobile ? (
+              <div className='text-[#915eff]'>
           <Typewriter
             words={['Abhiram', 'Developer', 'Designer',]}
             loop={0}
@@ -45,7 +55,20 @@ const Hero = () => {
             delaySpeed={1200}
               
           />
-          </span>
+          </div>
+          ) : (
+            <span className='text-[#915eff]'>
+              <Typewriter
+                words={['Abhiram', 'Developer', 'Designer',]}
+                loop={0 }
+                cursor
+                typeSpeed={300}
+                deleteSpeed={50}
+                delaySpeed={1200}
+              />
+            </span>
+          )}
+        
           
           </h1>
           <span className={`${style.heroSubText} mt-2 text-white`} >

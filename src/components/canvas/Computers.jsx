@@ -3,6 +3,7 @@ import Scene from "../../../public/desktop_pc/Scene"
 import React, { Suspense, useState, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
+import { div } from "framer-motion/client";
 
 const ComputersCanvas = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -15,7 +16,26 @@ const ComputersCanvas = () => {
     return () => query.removeEventListener('change', handler);
   }, []);
 
-  if (isMobile) return null;
+  if (isMobile) return (
+    <div className=' h-screen  -mt-10'>
+      <Canvas 
+    frameloop="demand"
+    shadows
+    camera={{position:[26,4,0],fov:55}}
+    gl={{preserveDrawingBuffer: true, alpha: true}}
+    >
+    <ambientLight/>
+    <hemisphereLight intensity={0.45} groundColor={"black"}/>
+    <pointLight intensity={0.5}/>
+    <OrbitControls enableZoom={false} 
+    minPolarAngle={Math.PI/2} maxPolarAngle={Math.PI/2} />
+      <Suspense fallback={null}>
+        <Scene />
+      </Suspense>
+    </Canvas>
+    </div>
+    
+  );
 
   return (
     <Canvas className=' h-screen -mt-20'
